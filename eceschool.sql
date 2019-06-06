@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 05 juin 2019 à 17:34
+-- Généré le :  mer. 05 juin 2019 à 22:19
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -107,7 +107,16 @@ CREATE TABLE IF NOT EXISTS `detailbulletin` (
   PRIMARY KEY (`id`),
   KEY `bulletin_id` (`bulletin_id`),
   KEY `enseignement_id` (`enseignement_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `detailbulletin`
+--
+
+INSERT INTO `detailbulletin` (`id`, `bulletin_id`, `enseignement_id`, `appreciation`) VALUES
+(1, 1, 1, 'Pas très attentif au classe la boug'),
+(2, 1, 2, 'La gow est al'),
+(3, 3, 2, 'La gow est plus al');
 
 -- --------------------------------------------------------
 
@@ -186,11 +195,21 @@ DROP TABLE IF EXISTS `evaluation`;
 CREATE TABLE IF NOT EXISTS `evaluation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `detailbulletin_id` int(11) NOT NULL,
-  `note` int(11) NOT NULL,
+  `note` float DEFAULT NULL,
   `appreciation` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `detailbulletin_id` (`detailbulletin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `evaluation`
+--
+
+INSERT INTO `evaluation` (`id`, `detailbulletin_id`, `note`, `appreciation`) VALUES
+(2, 1, 19.25, 'Les additions sont maitrisées igo'),
+(3, 2, 10, 'Claquée au sol'),
+(4, 3, 15.5, 'Bonne amélioration'),
+(5, 1, 8.5, 'Grosse chute sa mere');
 
 -- --------------------------------------------------------
 
